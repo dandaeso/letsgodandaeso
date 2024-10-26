@@ -1,8 +1,14 @@
 import random
 import pygame
 from spritesheet import *
+from util import *
+
+digging_sound=get_sound('assets/enemy_sound/digging.MP3')
+storm_sound=get_sound('assets/enemy_sound/storm.MP3')
+sparke_sound=get_sound('assets/enemy_sound/spark.MP3')
+
 class boss_pattern:
-    def __init__():
+    def __init__(self):
         pass
 
     def drawing(self, background):
@@ -77,7 +83,8 @@ class Boss_pattern2(boss_pattern):
 class pumkin_pattern1(Boss_pattern1):
     def __init__(self):
         super().__init__()
-        self.im=pygame.image.load("assets/pattern1/pumkin.png").convert_alpha()
+        digging_sound.play()
+        self.im=get_im("assets/pattern1/pumkin.png").convert_alpha()
         self.sheet = SpriteSheet(self.im)
         self.frame=[]
         for i in range(2):
@@ -91,7 +98,8 @@ class pumkin_pattern1(Boss_pattern1):
 class zombie_pattern1(Boss_pattern1):
     def __init__(self):
         super().__init__()
-        self.im=pygame.image.load("assets/pattern1/zombie.png").convert_alpha()
+        digging_sound.play()
+        self.im=get_im("assets/pattern1/zombie.png").convert_alpha()
         self.sheet = SpriteSheet(self.im)
         self.frame=[]
         for i in range(2):
@@ -110,7 +118,8 @@ class zombie_pattern1(Boss_pattern1):
 class jellyfish_pattern1(Boss_pattern1):
     def __init__(self):
         super().__init__()
-        self.im=pygame.image.load("assets/pattern1/jellyfish.png").convert_alpha()
+        sparke_sound.play()
+        self.im=get_im("assets/pattern1/jellyfish.png").convert_alpha()
         self.sheet = SpriteSheet(self.im)
         self.frame=[]
         for i in range(2):
@@ -122,7 +131,8 @@ class jellyfish_pattern1(Boss_pattern1):
 class pharaoh_pattern1(Boss_pattern1):
     def __init__(self):
         super().__init__()
-        self.im=pygame.image.load("assets/pattern1/desert.png").convert_alpha()
+        digging_sound.play()
+        self.im=get_im("assets/pattern1/desert.png").convert_alpha()
         self.sheet = SpriteSheet(self.im)
         self.frame=[]
         for i in range(2):
@@ -136,7 +146,7 @@ class pharaoh_pattern1(Boss_pattern1):
 class pumkin_pattern2(Boss_pattern2):
     def __init__(self):
         super().__init__()
-        self.im=pygame.image.load("assets/pattern2/pumkin.png").convert_alpha()
+        self.im=get_im("assets/pattern2/pumkin.png").convert_alpha()
         self.im=pygame.transform.scale(self.im,(128,128))
 
 
@@ -144,7 +154,7 @@ class pumkin_pattern2(Boss_pattern2):
 class zombie_pattern2(Boss_pattern2):
     def __init__(self):
         super().__init__()
-        self.im=pygame.image.load("assets/pattern2/zombie.png").convert_alpha()
+        self.im=get_im("assets/pattern2/zombie.png").convert_alpha()
         self.im=pygame.transform.scale(self.im,(96,96))
 
 
@@ -153,7 +163,8 @@ class zombie_pattern2(Boss_pattern2):
 class jellyfish_pattern2(Boss_pattern2):
     def __init__(self):
         super().__init__()
-        self.im=pygame.image.load("assets/pattern2/sea.png").convert_alpha()
+        storm_sound.play()
+        self.im=get_im("assets/pattern2/sea.png").convert_alpha()
         self.sheet = SpriteSheet(self.im)
         self.frame=[]
         for i in range(2):
@@ -165,7 +176,8 @@ class jellyfish_pattern2(Boss_pattern2):
 class pharaoh_pattern2(Boss_pattern2):
     def __init__(self):
         super().__init__()
-        self.im=pygame.image.load("assets/pattern2/desert.png").convert_alpha()
+        storm_sound.play()
+        self.im=get_im("assets/pattern2/desert.png").convert_alpha()
         self.sheet = SpriteSheet(self.im)
         self.frame=[]
         for i in range(2):
