@@ -1,7 +1,9 @@
 import random
 import pygame
+from util import * 
 class Exp():
     def __init__(self,im,x,y,hitbox):
+        self.sound=get_sound("assets/sound/exp.MP3")
         self.situ=False
         self.type="exp"
         self.im=im
@@ -9,7 +11,9 @@ class Exp():
         self.x=x+random.randint(-40,40)
         self.y=y+random.randint(-40,40)
         self.hitbox=hitbox
-        
+    def play_sound(self):
+        self.sound.play()
+
     def screen_move_check(self,key_pressed,deltatime,speed):
         if key_pressed[pygame.K_RIGHT]or key_pressed[pygame.K_d]:
             self.screen_move(-speed,0,deltatime)
