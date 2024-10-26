@@ -3,7 +3,6 @@ import spritesheet
 from util import *
 class Character():
     def __init__(self,speed,center_x,center_y,health=50,max_health=50,direction="right",updat=12,level=1):
-        self.sound=get_sound('assets/sound/walk.MP3')
         character_im=get_im("assets/enemy_frame/character_spritesheet.png").convert_alpha()
         character_sheet = spritesheet.SpriteSheet(character_im)
         self.frame=[]
@@ -39,7 +38,6 @@ class Character():
             if move:
                 if self.updat>=13:
                     self.updat=6
-                    self.sound.play()
             else:
                 self.updat-=0.013*deltatime
                 if self.updat>=14 or self.updat<=12:

@@ -4,8 +4,8 @@ import random
 import math
 from util import *
 from spritesheet import *
-from sound import sound_dict
-
+pygame.init()
+# Zombie 클래스
 zombie_frame1 = []
 zombie_frame2 = []
 zombie_im = get_im("assets/enemy_frame/zombie_spritesheet.png")
@@ -17,6 +17,7 @@ for i in range(2):
         zombie_frame1.append(im)
         zombie_frame2.append(zombie_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
 
+# Skeleton 클래스
 skeleton_frame1 = []
 skeleton_frame2 = []
 skeleton_im = get_im("assets/enemy_frame/skeleton_spritesheet.png")
@@ -28,7 +29,7 @@ for i in range(2):
         skeleton_frame1.append(im)
         skeleton_frame2.append(skeleton_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
 
-
+# Pharaoh 클래스
 pharaoh_frame1 = []
 pharaoh_frame2 = []
 pharaoh_im = get_im("assets/enemy_frame/pharaoh_spritesheet.png")
@@ -40,7 +41,7 @@ for i in range(2):
         pharaoh_frame1.append(im)
         pharaoh_frame2.append(pharaoh_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
 
-
+# Turtle 클래스
 turtle_frame1 = []
 turtle_frame2 = []
 turtle_im = get_im("assets/enemy_frame/turtle_spritesheet.png")
@@ -52,7 +53,7 @@ for i in range(2):
         turtle_frame1.append(im)
         turtle_frame2.append(turtle_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
 
-
+# Goblin 클래스
 goblin_frame1 = []
 goblin_frame2 = []
 goblin_im = get_im("assets/enemy_frame/goblin_spritesheet.png")
@@ -64,6 +65,7 @@ for i in range(2):
         goblin_frame1.append(im)
         goblin_frame2.append(goblin_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
 
+# Desert Goblin 클래스
 desert_goblin_frame1 = []
 desert_goblin_frame2 = []
 desert_goblin_im = get_im("assets/enemy_frame/desert_goblin_spritesheet.png")
@@ -75,7 +77,7 @@ for i in range(2):
         desert_goblin_frame1.append(im)
         desert_goblin_frame2.append(desert_goblin_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
 
-
+# Mushroom 클래스
 mushroom_frame1 = []
 mushroom_frame2 = []
 mushroom_im = get_im("assets/enemy_frame/mushroom_spritesheet.png")
@@ -87,7 +89,7 @@ for i in range(2):
         mushroom_frame1.append(im)
         mushroom_frame2.append(mushroom_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
 
-
+# Pumkin 클래스
 pumkin_frame1 = []
 pumkin_frame2 = []
 pumkin_im = get_im("assets/enemy_frame/pumkin_spritesheet.png")
@@ -99,7 +101,7 @@ for i in range(2):
         pumkin_frame1.append(im)
         pumkin_frame2.append(pumkin_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
 
-
+# Slime 클래스
 slime_frame1 = []
 slime_frame2 = []
 slime_im = get_im("assets/enemy_frame/slime_spritesheet.png")
@@ -111,7 +113,7 @@ for i in range(2):
         slime_frame1.append(im)
         slime_frame2.append(slime_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
 
-
+# Ghost 클래스
 ghost_frame1 = []
 ghost_frame2 = []
 ghost_im = get_im("assets/enemy_frame/ghost_spritesheet.png")
@@ -123,7 +125,7 @@ for i in range(2):
         ghost_frame1.append(im)
         ghost_frame2.append(ghost_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
 
-
+# Jellyfish 클래스
 jellyfish_frame1 = []
 jellyfish_frame2 = []
 jellyfish_im = get_im("assets/enemy_frame/jellyfish_spritesheet.png")
@@ -135,7 +137,7 @@ for i in range(2):
         jellyfish_frame1.append(im)
         jellyfish_frame2.append(jellyfish_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
 
-
+# Shellfish 클래스
 shellfish_frame1 = []
 shellfish_frame2 = []
 shellfish_im = get_im("assets/enemy_frame/shellfish_spritesheet.png")
@@ -147,7 +149,7 @@ for i in range(2):
         shellfish_frame1.append(im)
         shellfish_frame2.append(shellfish_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
 
-
+# Cactus 클래스
 cactus_frame1 = []
 cactus_frame2 = []
 cactus_im = get_im("assets/enemy_frame/cactus_spritesheet.png")
@@ -158,13 +160,8 @@ for i in range(2):
         im.set_colorkey((0, 0, 0))
         cactus_frame1.append(im)
         cactus_frame2.append(cactus_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
-
 class Enemy():
     def __init__(self):
-        self.max_health = 100
-        self.health = self.max_health
-        self.speed = 0.05
-        self.gen=True
         self.move_check=True
         self.damage_count_pos=0
         self.damage_tick=0
@@ -177,12 +174,7 @@ class Enemy():
         self.hitbox.top = -100
         self.update = 6
         self.death_c = True
-    def setting(self,wave):
-        self.x, self.y = get_random_position(640,405,1000)
-        self.max_health*=(1+0.1*wave)
-        self.health = self.max_health
-        self.damage*=(1+0.1*wave)
-        self.speed*=(1+0.005*wave)
+
     def screen_move_check(self,key_pressed,speed,deltatime):
         if key_pressed[pygame.K_RIGHT]or key_pressed[pygame.K_d]:
             self.screen_move(-speed,0,deltatime)
@@ -456,7 +448,7 @@ class Shellfish(Enemy):
         self.max_health = 100
         self.health = self.max_health
         self.speed = 0.05
-        self.name = "shellfish"
+        self.name = "sellfish"
         self.frame = shellfish_frame2
         self.frame1 = shellfish_frame1
         self.im = self.frame[0]
@@ -506,3 +498,12 @@ class Cactus(Enemy):
 
     def extinction(self, deltatime):
         self.update += 0.012 * deltatime
+        if self.health >= 0:
+            if self.update >= 4:
+                self.update = 0
+        elif self.update <= 4 and self.death_c:
+            self.update = 5
+            self.death_c = False
+        elif self.update >= 8:
+            return True
+        return False
