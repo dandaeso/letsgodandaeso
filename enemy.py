@@ -4,8 +4,167 @@ import random
 import math
 from util import *
 from spritesheet import *
+from sound import sound_dict
+
+zombie_frame1 = []
+zombie_frame2 = []
+zombie_im = get_im("assets/enemy_frame/zombie_spritesheet.png")
+zombie_sheet = SpriteSheet(zombie_im)
+for i in range(2):
+    for j in range(8):
+        im = pygame.transform.flip(zombie_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)), True, False)
+        im.set_colorkey((0, 0, 0))
+        zombie_frame1.append(im)
+        zombie_frame2.append(zombie_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
+
+skeleton_frame1 = []
+skeleton_frame2 = []
+skeleton_im = get_im("assets/enemy_frame/skeleton_spritesheet.png")
+skeleton_sheet = SpriteSheet(skeleton_im)
+for i in range(2):
+    for j in range(8):
+        im = pygame.transform.flip(skeleton_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)), True, False)
+        im.set_colorkey((0, 0, 0))
+        skeleton_frame1.append(im)
+        skeleton_frame2.append(skeleton_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
+
+
+pharaoh_frame1 = []
+pharaoh_frame2 = []
+pharaoh_im = get_im("assets/enemy_frame/pharaoh_spritesheet.png")
+pharaoh_sheet = SpriteSheet(pharaoh_im)
+for i in range(2):
+    for j in range(8):
+        im = pygame.transform.flip(pharaoh_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)), True, False)
+        im.set_colorkey((0, 0, 0))
+        pharaoh_frame1.append(im)
+        pharaoh_frame2.append(pharaoh_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
+
+
+turtle_frame1 = []
+turtle_frame2 = []
+turtle_im = get_im("assets/enemy_frame/turtle_spritesheet.png")
+turtle_sheet = SpriteSheet(turtle_im)
+for i in range(2):
+    for j in range(8):
+        im = pygame.transform.flip(turtle_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)), True, False)
+        im.set_colorkey((0, 0, 0))
+        turtle_frame1.append(im)
+        turtle_frame2.append(turtle_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
+
+
+goblin_frame1 = []
+goblin_frame2 = []
+goblin_im = get_im("assets/enemy_frame/goblin_spritesheet.png")
+goblin_sheet = SpriteSheet(goblin_im)
+for i in range(2):
+    for j in range(8):
+        im = pygame.transform.flip(goblin_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)), True, False)
+        im.set_colorkey((0, 0, 0))
+        goblin_frame1.append(im)
+        goblin_frame2.append(goblin_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
+
+desert_goblin_frame1 = []
+desert_goblin_frame2 = []
+desert_goblin_im = get_im("assets/enemy_frame/desert_goblin_spritesheet.png")
+desert_goblin_sheet = SpriteSheet(desert_goblin_im)
+for i in range(2):
+    for j in range(8):
+        im = pygame.transform.flip(desert_goblin_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)), True, False)
+        im.set_colorkey((0, 0, 0))
+        desert_goblin_frame1.append(im)
+        desert_goblin_frame2.append(desert_goblin_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
+
+
+mushroom_frame1 = []
+mushroom_frame2 = []
+mushroom_im = get_im("assets/enemy_frame/mushroom_spritesheet.png")
+mushroom_sheet = SpriteSheet(mushroom_im)
+for i in range(2):
+    for j in range(8):
+        im = pygame.transform.flip(mushroom_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)), True, False)
+        im.set_colorkey((0, 0, 0))
+        mushroom_frame1.append(im)
+        mushroom_frame2.append(mushroom_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
+
+
+pumkin_frame1 = []
+pumkin_frame2 = []
+pumkin_im = get_im("assets/enemy_frame/pumkin_spritesheet.png")
+pumkin_sheet = SpriteSheet(pumkin_im)
+for i in range(2):
+    for j in range(8):
+        im = pygame.transform.flip(pumkin_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)), True, False)
+        im.set_colorkey((0, 0, 0))
+        pumkin_frame1.append(im)
+        pumkin_frame2.append(pumkin_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
+
+
+slime_frame1 = []
+slime_frame2 = []
+slime_im = get_im("assets/enemy_frame/slime_spritesheet.png")
+slime_sheet = SpriteSheet(slime_im)
+for i in range(2):
+    for j in range(8):
+        im = pygame.transform.flip(slime_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)), True, False)
+        im.set_colorkey((0, 0, 0))
+        slime_frame1.append(im)
+        slime_frame2.append(slime_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
+
+
+ghost_frame1 = []
+ghost_frame2 = []
+ghost_im = get_im("assets/enemy_frame/ghost_spritesheet.png")
+ghost_sheet = SpriteSheet(ghost_im)
+for i in range(2):
+    for j in range(8):
+        im = pygame.transform.flip(ghost_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)), True, False)
+        im.set_colorkey((0, 0, 0))
+        ghost_frame1.append(im)
+        ghost_frame2.append(ghost_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
+
+
+jellyfish_frame1 = []
+jellyfish_frame2 = []
+jellyfish_im = get_im("assets/enemy_frame/jellyfish_spritesheet.png")
+jellyfish_sheet = SpriteSheet(jellyfish_im)
+for i in range(2):
+    for j in range(8):
+        im = pygame.transform.flip(jellyfish_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)), True, False)
+        im.set_colorkey((0, 0, 0))
+        jellyfish_frame1.append(im)
+        jellyfish_frame2.append(jellyfish_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
+
+
+shellfish_frame1 = []
+shellfish_frame2 = []
+shellfish_im = get_im("assets/enemy_frame/shellfish_spritesheet.png")
+shellfish_sheet = SpriteSheet(shellfish_im)
+for i in range(2):
+    for j in range(8):
+        im = pygame.transform.flip(shellfish_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)), True, False)
+        im.set_colorkey((0, 0, 0))
+        shellfish_frame1.append(im)
+        shellfish_frame2.append(shellfish_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
+
+
+cactus_frame1 = []
+cactus_frame2 = []
+cactus_im = get_im("assets/enemy_frame/cactus_spritesheet.png")
+cactus_sheet = SpriteSheet(cactus_im)
+for i in range(2):
+    for j in range(8):
+        im = pygame.transform.flip(cactus_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)), True, False)
+        im.set_colorkey((0, 0, 0))
+        cactus_frame1.append(im)
+        cactus_frame2.append(cactus_sheet.get_image(j, i, 64, 64, 2, (0, 0, 0)))
+
 class Enemy():
     def __init__(self):
+        self.max_health = 100
+        self.health = self.max_health
+        self.speed = 0.05
+        self.gen=True
         self.move_check=True
         self.damage_count_pos=0
         self.damage_tick=0
@@ -18,7 +177,12 @@ class Enemy():
         self.hitbox.top = -100
         self.update = 6
         self.death_c = True
-
+    def setting(self,wave):
+        self.x, self.y = get_random_position(640,405,1000)
+        self.max_health*=(1+0.1*wave)
+        self.health = self.max_health
+        self.damage*=(1+0.1*wave)
+        self.speed*=(1+0.005*wave)
     def screen_move_check(self,key_pressed,speed,deltatime):
         if key_pressed[pygame.K_RIGHT]or key_pressed[pygame.K_d]:
             self.screen_move(-speed,0,deltatime)
@@ -81,163 +245,100 @@ class Zombie(Enemy):
         super().__init__()
         self.max_health = 100
         self.health = self.max_health
-        self.speed=0.05
+        self.speed = 0.05
         self.name = "zombie"
-        self.im=pygame.image.load("assets/enemy_frame/zombie_spritesheet.png").convert_alpha()
-        self.sheet = SpriteSheet(self.im)
-        self.frame=[]
-        self.frame1=[]
-        for i in range(2):
-            for j in range(8):
-                im=pygame.transform.flip(self.sheet.get_image(j,i,64,64, 2,(0,0,0)),True,False)
-                im.set_colorkey((0,0,0))
-                self.frame1.append(im)
-                self.frame.append(self.sheet.get_image(j,i,64,64, 2,(0,0,0)))
-        self.im=self.frame[0]
+        self.frame = zombie_frame2
+        self.frame1 = zombie_frame1
+        self.im = self.frame[0]
 
 class Skeleton(Enemy):
     def __init__(self):
         super().__init__()
         self.max_health = 100
         self.health = self.max_health
-        self.speed=0.06
+        self.speed = 0.06
         self.name = "skeleton"
-        self.im=pygame.image.load("assets/enemy_frame/skeleton_spritesheet.png").convert_alpha()
-        self.sheet = SpriteSheet(self.im)
-        self.frame=[]
-        self.frame1=[]
-        for i in range(2):
-            for j in range(8):
-                im=pygame.transform.flip(self.sheet.get_image(j,i,64,64, 2,(0,0,0)),True,False)
-                im.set_colorkey((0,0,0))
-                self.frame1.append(im)
-                self.frame.append(self.sheet.get_image(j,i,64,64, 2,(0,0,0)))
-        self.im=self.frame[0]
+        self.frame = skeleton_frame2
+        self.frame1 = skeleton_frame1
+        self.im = self.frame[0]
+
 class Pharaoh(Enemy):
     def __init__(self):
         super().__init__()
-        self.speed=0.05
+        self.speed = 0.05
         self.max_health = 100
         self.health = self.max_health
         self.name = "pharaoh"
-        self.im=pygame.image.load("assets/enemy_frame/pharaoh_spritesheet.png").convert_alpha()
-        self.sheet = SpriteSheet(self.im)
-        self.frame=[]
-        self.frame1=[]
-        for i in range(2):
-            for j in range(8):
-                im=pygame.transform.flip(self.sheet.get_image(j,i,64,64, 2,(0,0,0)),True,False)
-                im.set_colorkey((0,0,0))
-                self.frame1.append(im)
-                self.frame.append(self.sheet.get_image(j,i,64,64, 2,(0,0,0)))
-        self.im=self.frame[0]
+        self.frame = pharaoh_frame2
+        self.frame1 = pharaoh_frame1
+        self.im = self.frame[0]
 
 class Turtle(Enemy):
     def __init__(self):
         super().__init__()
-        self.speed=0.04
+        self.speed = 0.04
         self.max_health = 100
         self.health = self.max_health
         self.name = "turtle"
-        self.im=pygame.image.load("assets/enemy_frame/turtle_spritesheet.png").convert_alpha()
-        self.sheet = SpriteSheet(self.im)
-        self.frame=[]
-        self.frame1=[]
-        for i in range(2):
-            for j in range(8):
-                im=pygame.transform.flip(self.sheet.get_image(j,i,64,64, 2,(0,0,0)),True,False)
-                im.set_colorkey((0,0,0))
-                self.frame1.append(im)
-                self.frame.append(self.sheet.get_image(j,i,64,64, 2,(0,0,0)))
-        self.im=self.frame[0]
+        self.frame = turtle_frame2
+        self.frame1 = turtle_frame1
+        self.im = self.frame[0]
 
 class Goblin(Enemy):
     def __init__(self):
         super().__init__()
         self.max_health = 100
         self.health = self.max_health
-        self.speed=0.07
+        self.speed = 0.07
         self.name = "goblin"
-        self.im=pygame.image.load("assets/enemy_frame/goblin_spritesheet.png").convert_alpha()
-        self.sheet = SpriteSheet(self.im)
-        self.frame=[]
-        self.frame1=[]
-        for i in range(2):
-            for j in range(8):
-                im=pygame.transform.flip(self.sheet.get_image(j,i,64,64, 2,(0,0,0)),True,False)
-                im.set_colorkey((0,0,0))
-                self.frame1.append(im)
-                self.frame.append(self.sheet.get_image(j,i,64,64, 2,(0,0,0)))
-        self.im=self.frame[0]
+        self.frame = goblin_frame2
+        self.frame1 = goblin_frame1
+        self.im = self.frame[0]
 
 class Desert_Goblin(Enemy):
     def __init__(self):
         super().__init__()
         self.max_health = 100
         self.health = self.max_health
-        self.speed=0.07
+        self.speed = 0.07
         self.name = "desert_Goblin"
-        self.im=pygame.image.load("assets/enemy_frame/desert_goblin_spritesheet.png").convert_alpha()
-        self.sheet = SpriteSheet(self.im)
-        self.frame=[]
-        self.frame1=[]
-        for i in range(2):
-            for j in range(8):
-                im=pygame.transform.flip(self.sheet.get_image(j,i,64,64, 2,(0,0,0)),True,False)
-                im.set_colorkey((0,0,0))
-                self.frame1.append(im)
-                self.frame.append(self.sheet.get_image(j,i,64,64, 2,(0,0,0)))
-        self.im=self.frame[0]
+        self.frame = desert_goblin_frame2
+        self.frame1 = desert_goblin_frame1
+        self.im = self.frame[0]
 
 class Mushroom(Enemy):
     def __init__(self):
         super().__init__()
         self.max_health = 100
         self.health = self.max_health
-        self.speed=0.06
+        self.speed = 0.06
         self.name = "mushroom"
-        self.im=pygame.image.load("assets/enemy_frame/mushroom_spritesheet.png").convert_alpha()
-        self.sheet = SpriteSheet(self.im)
-        self.frame=[]
-        self.frame1=[]
-        for i in range(2):
-            for j in range(8):
-                im=pygame.transform.flip(self.sheet.get_image(j,i,64,64, 2,(0,0,0)),True,False)
-                im.set_colorkey((0,0,0))
-                self.frame1.append(im)
-                self.frame.append(self.sheet.get_image(j,i,64,64, 2,(0,0,0)))
-        self.im=self.frame[0]
-
+        self.frame = mushroom_frame2
+        self.frame1 = mushroom_frame1
+        self.im = self.frame[0]
 
 class Pumkin(Enemy):
     def __init__(self):
         super().__init__()
         self.max_health = 100
         self.health = self.max_health
-        self.speed=0.05
+        self.speed = 0.05
         self.name = "pumkin"
-        self.im=pygame.image.load("assets/enemy_frame/pumkin_spritesheet.png").convert_alpha()
-        self.sheet = SpriteSheet(self.im)
-        self.frame=[]
-        self.frame1=[]
-        for i in range(2):
-            for j in range(8):
-                im=pygame.transform.flip(self.sheet.get_image(j,i,64,64, 2,(0,0,0)),True,False)
-                im.set_colorkey((0,0,0))
-                self.frame1.append(im)
-                self.frame.append(self.sheet.get_image(j,i,64,64, 2,(0,0,0)))
-        self.im=self.frame[0]
+        self.frame = pumkin_frame2
+        self.frame1 = pumkin_frame1
+        self.im = self.frame[0]
 
     def flip_im(self):
-        if self.direction.x>=0:
+        if self.direction.x >= 0:
             self.im = self.frame[int(self.update)]
         else:
             self.im = self.frame1[int(self.update)]
         if self.damage_tick <= self.damage_tick_limit:
-            self.im.set_alpha(256-(self.damage_tick_limit-self.damage_tick)*128//self.damage_tick_limit)
+            self.im.set_alpha(256 - (self.damage_tick_limit - self.damage_tick) * 128 // self.damage_tick_limit)
         else:
             self.im.set_alpha(256)
-    def  extinction(self, deltatime):
+
+    def extinction(self, deltatime):
         self.update += 0.012 * deltatime
         if self.health >= 0:
             if self.update >= 5:
@@ -255,191 +356,153 @@ class Slime(Enemy):
         super().__init__()
         self.max_health = 100
         self.health = self.max_health
-        self.speed=0.05
+        self.speed = 0.05
         self.name = "slime"
-        self.im=pygame.image.load("assets/enemy_frame/slime_spritesheet.png").convert_alpha()
-        self.sheet = SpriteSheet(self.im)
-        self.frame=[]
-        self.frame1=[]
-        for i in range(2):
-            for j in range(8):
-                im=pygame.transform.flip(self.sheet.get_image(j,i,64,64, 2,(0,0,0)),True,False)
-                im.set_colorkey((0,0,0))
-                self.frame1.append(im)
-                self.frame.append(self.sheet.get_image(j,i,64,64, 2,(0,0,0)))
-        self.im=self.frame[0]
+        self.frame = slime_frame2
+        self.frame1 = slime_frame1
+        self.im = self.frame[0]
 
-    def  extinction(self,deltatime):
-        self.update+=0.012*deltatime
-        if self.health>=0:
-            if self.update>=4:
-                self.update=0
-        elif self.update<=5 and self.death_c:
-            self.update=6
-            self.death_c=False
-        elif self.update>=10:
+    def extinction(self, deltatime):
+        self.update += 0.012 * deltatime
+        if self.health >= 0:
+            if self.update >= 4:
+                self.update = 0
+        elif self.update <= 5 and self.death_c:
+            self.update = 6
+            self.death_c = False
+        elif self.update >= 10:
             return True
         return False
-    
+
     def flip_im(self):
-        if self.direction.x>=0:
+        if self.direction.x >= 0:
             self.im = self.frame[int(self.update)]
         else:
             self.im = self.frame1[int(self.update)]
         if self.damage_tick <= self.damage_tick_limit:
-            self.im.set_alpha(256-(self.damage_tick_limit-self.damage_tick)*128//self.damage_tick_limit)
+            self.im.set_alpha(256 - (self.damage_tick_limit - self.damage_tick) * 128 // self.damage_tick_limit)
         else:
             self.im.set_alpha(256)
+
 class Ghost(Enemy):
     def __init__(self):
         super().__init__()
         self.max_health = 100
         self.health = self.max_health
-        self.speed=0.07
+        self.speed = 0.07
         self.name = "ghost"
-        self.im=pygame.image.load("assets/enemy_frame/ghost_spritesheet.png").convert_alpha()
-        self.sheet = SpriteSheet(self.im)
-        self.frame=[]
-        self.frame1=[]
-        for i in range(2):
-            for j in range(8):
-                im=pygame.transform.flip(self.sheet.get_image(j,i,64,64, 2,(0,0,0)),True,False)
-                im.set_colorkey((0,0,0))
-                self.frame1.append(im)
-                self.frame.append(self.sheet.get_image(j,i,64,64, 2,(0,0,0)))
-        self.im=self.frame[0]
+        self.frame = ghost_frame2
+        self.frame1 = ghost_frame1
+        self.im = self.frame[0]
+
     def flip_im(self):
-        if self.direction.x>=0:
+        if self.direction.x >= 0:
             self.im = self.frame[int(self.update)]
         else:
             self.im = self.frame1[int(self.update)]
         if self.damage_tick <= self.damage_tick_limit:
-            self.im.set_alpha(256-(self.damage_tick_limit-self.damage_tick)*128//self.damage_tick_limit)
+            self.im.set_alpha(256 - (self.damage_tick_limit - self.damage_tick) * 128 // self.damage_tick_limit)
         else:
             self.im.set_alpha(256)
-    def  extinction(self,deltatime):
-        self.update+=0.012*deltatime
-        if self.health>=0:
-            if self.update>=2:
-                self.update=0
-        elif self.update<=2 and self.death_c:
-            self.update=3
-            self.death_c=False
-        elif self.update>=7:
+
+    def extinction(self, deltatime):
+        self.update += 0.012 * deltatime
+        if self.health >= 0:
+            if self.update >= 2:
+                self.update = 0
+        elif self.update <= 2 and self.death_c:
+            self.update = 3
+            self.death_c = False
+        elif self.update >= 7:
             return True
         return False
+
 class Jellyfish(Enemy):
     def __init__(self):
         super().__init__()
         self.max_health = 100
         self.health = self.max_health
-        self.speed=0.05
-        self.name="jellyfish"
-        self.im=pygame.image.load("assets/enemy_frame/jellyfish_spritesheet.png").convert_alpha()
-        self.sheet = SpriteSheet(self.im)
-        self.frame=[]
-        self.frame1=[]
-        for i in range(2):
-            for j in range(8):
-                im=pygame.transform.flip(self.sheet.get_image(j,i,64,64, 2,(0,0,0)),True,False)
-                im.set_colorkey((0,0,0))
-                self.frame1.append(im)
-                self.frame.append(self.sheet.get_image(j,i,64,64, 2,(0,0,0)))
-        self.im=self.frame[0]
+        self.speed = 0.05
+        self.name = "jellyfish"
+        self.frame = jellyfish_frame2
+        self.frame1 = jellyfish_frame1
+        self.im = self.frame[0]
 
     def flip_im(self):
-        if self.direction.x>=0:
+        if self.direction.x >= 0:
             self.im = self.frame[int(self.update)]
         else:
             self.im = self.frame1[int(self.update)]
         if self.damage_tick <= self.damage_tick_limit:
-            self.im.set_alpha(256-(self.damage_tick_limit-self.damage_tick)*128//self.damage_tick_limit)
+            self.im.set_alpha(256 - (self.damage_tick_limit - self.damage_tick) * 128 // self.damage_tick_limit)
         else:
             self.im.set_alpha(256)
-    def  extinction(self,deltatime):
-        self.update+=0.012*deltatime
-        if self.health>=0:
-            if self.update>=2:
-                self.update=0
-        elif self.update<=2 and self.death_c:
-            self.update=3
-            self.death_c=False
-        elif self.update>=7:
+
+    def extinction(self, deltatime):
+        self.update += 0.012 * deltatime
+        if self.health >= 0:
+            if self.update >= 2:
+                self.update = 0
+        elif self.update <= 2 and self.death_c:
+            self.update = 3
+            self.death_c = False
+        elif self.update >= 7:
             return True
         return False
+
 class Shellfish(Enemy):
     def __init__(self):
         super().__init__()
         self.max_health = 100
         self.health = self.max_health
-        self.speed=0.05
-        self.name="sellfish"
-        self.im=pygame.image.load("assets/enemy_frame/shellfish_spritesheet.png").convert_alpha()
-        self.sheet = SpriteSheet(self.im)
-        self.frame=[]
-        self.frame1=[]
-        for i in range(2):
-            for j in range(8):
-                im=pygame.transform.flip(self.sheet.get_image(j,i,64,64, 2,(0,0,0)),True,False)
-                im.set_colorkey((0,0,0))
-                self.frame1.append(im)
-                self.frame.append(self.sheet.get_image(j,i,64,64, 2,(0,0,0)))
-        self.im=self.frame[0]
+        self.speed = 0.05
+        self.name = "shellfish"
+        self.frame = shellfish_frame2
+        self.frame1 = shellfish_frame1
+        self.im = self.frame[0]
+
     def flip_im(self):
-        if self.direction.x>=0:
+        if self.direction.x >= 0:
             self.im = self.frame[int(self.update)]
         else:
             self.im = self.frame1[int(self.update)]
         if self.damage_tick <= self.damage_tick_limit:
-            self.im.set_alpha(256-(self.damage_tick_limit-self.damage_tick)*128//self.damage_tick_limit)
+            self.im.set_alpha(256 - (self.damage_tick_limit - self.damage_tick) * 128 // self.damage_tick_limit)
         else:
             self.im.set_alpha(256)
-    def  extinction(self,deltatime):
-        self.update+=0.012*deltatime
-        if self.health>=0:
-            if self.update>=3:
-                self.update=0
-        elif self.update<=3 and self.death_c:
-            self.update=4
-            self.death_c=False
-        elif self.update>=8:
+
+    def extinction(self, deltatime):
+        self.update += 0.012 * deltatime
+        if self.health >= 0:
+            if self.update >= 3:
+                self.update = 0
+        elif self.update <= 3 and self.death_c:
+            self.update = 4
+            self.death_c = False
+        elif self.update >= 8:
             return True
         return False
+
 class Cactus(Enemy):
     def __init__(self):
         super().__init__()
         self.max_health = 100
         self.health = self.max_health
-        self.speed=0.06
-        self.name="cactus"
-        self.im=pygame.image.load("assets/enemy_frame/cactus_spritesheet.png").convert_alpha()
-        self.sheet = SpriteSheet(self.im)
-        self.frame=[]
-        self.frame1=[]
-        for i in range(2):
-            for j in range(8):
-                im=pygame.transform.flip(self.sheet.get_image(j,i,64,64, 2,(0,0,0)),True,False)
-                im.set_colorkey((0,0,0))
-                self.frame1.append(im)
-                self.frame.append(self.sheet.get_image(j,i,64,64, 2,(0,0,0)))
-        self.im=self.frame[0]
+        self.speed = 0.06
+        self.name = "cactus"
+        self.frame = cactus_frame2
+        self.frame1 = cactus_frame1
+        self.im = self.frame[0]
+
     def flip_im(self):
-        if self.direction.x>=0:
+        if self.direction.x >= 0:
             self.im = self.frame[int(self.update)]
         else:
             self.im = self.frame1[int(self.update)]
         if self.damage_tick <= self.damage_tick_limit:
-            self.im.set_alpha(256-(self.damage_tick_limit-self.damage_tick)*128//self.damage_tick_limit)
+            self.im.set_alpha(256 - (self.damage_tick_limit - self.damage_tick) * 128 // self.damage_tick_limit)
         else:
             self.im.set_alpha(256)
-    def  extinction(self,deltatime):
-        self.update+=0.012*deltatime
-        if self.health>=0:
-            if self.update>=4:
-                self.update=0
-        elif self.update<=4 and self.death_c:
-            self.update=5
-            self.death_c=False
-        elif self.update>=8:
-            return True
-        return False
+
+    def extinction(self, deltatime):
+        self.update += 0.012 * deltatime

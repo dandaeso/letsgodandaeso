@@ -1,8 +1,10 @@
 import pygame
 import spritesheet
+from util import *
 class Character():
     def __init__(self,speed,center_x,center_y,health=50,max_health=50,direction="right",updat=12,level=1):
-        character_im=pygame.image.load("assets/enemy_frame/character_spritesheet.png").convert_alpha()
+        self.sound=get_sound('assets/sound/walk.MP3')
+        character_im=get_im("assets/enemy_frame/character_spritesheet.png").convert_alpha()
         character_sheet = spritesheet.SpriteSheet(character_im)
         self.frame=[]
         for i in range(2):
@@ -18,6 +20,7 @@ class Character():
         self.direction=direction
         self.updat=updat
         self.level=level
+        self.death_c=True
     def screen_move_check(self,key_pressed,deltatime,scroll_x,scroll_y):
         if key_pressed[pygame.K_RIGHT] or key_pressed[pygame.K_d]:
             scroll_x -= self.speed * deltatime
@@ -31,14 +34,21 @@ class Character():
             scroll_y -= self.speed * deltatime
         return scroll_x,scroll_y
     def change_frame(self,move,deltatime):
-        if move:
-            self.updat+=0.015*deltatime
-            if self.updat>=13:
-                self.updat=6
-        else:
-            self.updat+=0.03
-            if self.updat>=14 or self.updat<=12:
-                self.updat=12
+        self.updat+=0.015*deltatime
+        if self.health>=0:
+            if move:
+                if self.updat>=13:
+                    self.updat=6
+                    self.sound.play()
+            else:
+                self.updat-=0.013*deltatime
+                if self.updat>=14 or self.updat<=12:
+                    self.updat=12
+        elif self.updat>=5.8 and self.death_c:
+            self.updat=0
+            self.death_c=False
+        elif self.updat>=5.8:
+            return True
 
 
         if self.direction=="left":
